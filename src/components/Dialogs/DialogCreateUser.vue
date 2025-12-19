@@ -76,25 +76,25 @@ const submitForm = async () => {
 };
 
 const emailRules =[
-  value => {
+  (value: string) => {
     if (value) return true
        return 'Campo obrigatório.'
      },
-  value=> (/.+@.+\..+/.test(value) ? true : 'E-mail deve ser válido.')
+  (value: string) => (/.+@.+\..+/.test(value) ? true : 'E-mail deve ser válido.')
 ];
 
 const nameRules =[
-  value => {
+  (value: string) => {
     if (value) return true
        return 'Campo obrigatório.'
      },
-  value => {
+  (value: string) => {
      if (value?.length <= 10) return true
        return 'O nome deve ter no máximo 10 caracteres.'
   },
 ];
 const perfilRules =[
-  value => {
+  (value: string) => {
     if (value) return true
        return 'Campo obrigatório.'
      },

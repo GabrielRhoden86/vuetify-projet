@@ -24,7 +24,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '',
         name: 'home',
         component: () => import('@/pages/HomePage.vue'),
-        meta: { title: 'Home' },
+        meta: { title: 'Home', requiresAuth: true },
       },
       {
         path: 'usuarios',
@@ -44,6 +44,15 @@ const router = createRouter({
 
 router.isReady().then(() => {
   localStorage.removeItem('vuetify:dynamic-reload')
+});
+
+router.beforeEach((to, _from, next) => {
+  const isAuthenticated = localStorage.getItem('acess_token');
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    next({ name: 'login' });
+  } else {
+    next();
+  }
 });
 
 export default router;

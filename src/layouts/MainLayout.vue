@@ -2,8 +2,9 @@
   <v-app>
     <SideNavBar v-model="drawerIsOpen"/>
     <Header @toggle-drawer="drawerIsOpen = !drawerIsOpen"/>
+
     <v-main class="bg-grey-lighten-5">
-      <router-view />
+    <router-view />
     </v-main>
   </v-app>
 </template>
@@ -16,4 +17,6 @@ import Header from '@/components/Header.vue';
 const drawerIsOpen = ref(false);
 
 </script>
+
+
 

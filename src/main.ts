@@ -1,26 +1,16 @@
-/**
- * main.ts
- *
- * Bootstraps Vuetify and other plugins then mounts the App`
- */
-
-// Plugins
 import { registerPlugins } from '@/plugins'
-
-// Components
 import App from './App.vue'
-
-// Composables
 import { createApp } from 'vue'
+import { createPinia } from 'pinia' // Adicione isso
 
 // Styles
 import 'unfonts.css'
-
-// @ts-ignore: no type declarations available for 'vuetify/styles'
 import 'vuetify/styles'
 
 const app = createApp(App)
+const pinia = createPinia() // Cria a instância
 
-registerPlugins(app)
+app.use(pinia)        // INSTALA O PINIA AQUI MANUALMENTE
+registerPlugins(app)  // Depois instala os outros plugins
 
 app.mount('#app')
