@@ -30,7 +30,7 @@ const routes: Array<RouteRecordRaw> = [
         path: 'usuarios',
         name: 'usuarios',
         component: () => import('@/pages/UsersPage.vue'),
-        meta: { title: 'Lista de usuários' },
+        meta: { title: 'Lista de usuários',  requiresAuth: true },
       },
     ],
   },

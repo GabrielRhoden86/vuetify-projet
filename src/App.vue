@@ -1,26 +1,30 @@
 <template>
   <v-app>
+    <span v-if="isLoading">
+      <v-progress-linear
+       color="cyan"
+       indeterminate
+       ></v-progress-linear>
+    </span>
    <router-view />
-
-     <!-- Overlay Global de Loading
+     <!-- Overlay Global de Loading -->
     <v-overlay
-      v-model="isLoading"
+      v-model="globalLoading"
       class="align-center justify-center"
       persistent
     >
       <v-progress-circular
         color="primary"
         indeterminate
-        size="64"
+        size="58"
       ></v-progress-circular>
     </v-overlay>
-    -->
 
     <v-snackbar
       v-model="show"
       :color="color"
       elevation="34"
-      :timeout="5000"
+      :timeout="8000"
     >
     <span>
       {{ message }}
@@ -41,6 +45,6 @@ import { storeToRefs } from 'pinia';
 const toastStore = useToastStore();
 const loadingStore = useLoadingStore();
 const { show, message, color } = storeToRefs(toastStore);
-const { isLoading } = storeToRefs(loadingStore);
+const { isLoading, globalLoading } = storeToRefs(loadingStore);
 
 </script>

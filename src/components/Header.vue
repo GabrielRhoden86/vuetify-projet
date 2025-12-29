@@ -103,10 +103,13 @@
 <script  lang="ts" setup>
   import { ref } from 'vue';
   import DialogCreateUser from '@/components/Dialogs/DialogCreateUser.vue';
+  import { useLoadingStore } from '@/stores/loadingStore';
+  const loadingStore = useLoadingStore();
 
   defineEmits(['toggleDrawer']);
   const isDialog = ref(false);
+
   const handleCreateUser = () => {
-    console.log("Evento 'createUser' recebido no componente pai!");
-};
+    loadingStore.globalLoading = true;
+  };
 </script>
